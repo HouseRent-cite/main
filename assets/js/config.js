@@ -5,8 +5,8 @@
 //  Секретный ключ service_role / secret сюда вставлять НЕЛЬЗЯ!
 // =====================================================================
 
-export const SUPABASE_URL = 'https://YOUR-PROJECT-ID.supabase.co';
-export const SUPABASE_ANON_KEY = 'YOUR-ANON-KEY';
+export const SUPABASE_URL = 'https://jfesgkdgugbyklvgongh.supabase.co/rest/v1/';
+export const SUPABASE_ANON_KEY = 'sb_publishable_MPJwxkSxQy99CvMH7qIHhw_EnawoReT';
 
 // Имя хранилища для фотографий (создаётся SQL-скриптом, менять не нужно)
 export const STORAGE_BUCKET = 'photos';
