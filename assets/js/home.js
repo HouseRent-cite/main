@@ -219,7 +219,7 @@ function initReviews() {
   document.querySelectorAll('.slider-arrows .round-btn').forEach((b) => {
     b.addEventListener('click', () => {
       const card = track.querySelector('.review');
-      const step = card ? card.getBoundingClientRect().width + 20 : 320;
+      const step = card ? card.getBoundingClientRect().width + 30 : 320;
       track.scrollBy({ left: step * Number(b.dataset.dir), behavior: reducedMotion() ? 'auto' : 'smooth' });
     });
   });
