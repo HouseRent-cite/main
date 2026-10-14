@@ -119,8 +119,8 @@ function reviewsHTML(reviews) {
       <div class="section-head section-head-row reveal">
         <div><p class="eyebrow">Отзывы</p><h2>Что говорят гости</h2></div>
         <div class="slider-arrows">
-          <button class="round-btn" data-dir="-1.20" aria-label="Назад">${icon('arrowL')}</button>
-          <button class="round-btn" data-dir="1.20" aria-label="Вперёд">${icon('arrowR')}</button>
+          <button class="round-btn" data-dir="-1" aria-label="Назад">${icon('arrowL')}</button>
+          <button class="round-btn" data-dir="1" aria-label="Вперёд">${icon('arrowR')}</button>
         </div>
       </div>
     </div>
