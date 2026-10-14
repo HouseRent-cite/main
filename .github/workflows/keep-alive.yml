@@ -1,0 +1,31 @@
+# Бесплатный проект Supabase «засыпает» после 7 дней без запросов.
+# Этот сценарий раз в 3 дня делает один лёгкий запрос к базе, чтобы она не уснула.
+# Ничего настраивать не нужно: адрес и публичный ключ берутся из assets/js/config.js.
+name: Supabase keep-alive
+
+on:
+  schedule:
+    - cron: '17 6 */3 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ping Supabase
+        run: |
+          URL=$(grep -oP "SUPABASE_URL\s*=\s*['\"]\K[^'\"]+" assets/js/config.js || true)
+          KEY=$(grep -oP "SUPABASE_ANON_KEY\s*=\s*['\"]\K[^'\"]+" assets/js/config.js || true)
+          if [ -z "$URL" ] || echo "$URL" | grep -q "YOUR-PROJECT"; then
+            echo "Supabase ещё не подключён — пропускаю."
+            exit 0
+          fi
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" "$URL/rest/v1/site_settings?select=id&limit=1" -H "apikey: $KEY")
+          echo "Ответ базы: $CODE"
+          if [ "$CODE" != "200" ]; then
+            echo "::warning::База ответила кодом $CODE. Возможно, проект на паузе — зайдите в Supabase и нажмите Restore."
+          fi
