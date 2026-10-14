@@ -85,6 +85,7 @@ p:last-child { margin-bottom: 0; }
   transition: background .25s, transform .25s var(--ease);
 }
 .round-btn:hover { background: rgba(255, 255, 255, .12); transform: scale(1.06); }
+.slider-arrows { display: flex; gap: 12px; flex: none; }
 
 /* ---------- Шапка ---------- */
 .site-header {
